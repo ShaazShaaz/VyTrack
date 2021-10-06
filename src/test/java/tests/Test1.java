@@ -1,10 +1,22 @@
 package tests;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebElement;
+import pages.UsersCommonArea;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBase;
+import utilities.VyTrackUtil;
 
 public class Test1 extends TestBase {
-//some change
+
+    @Test
+    public void test(){
+        VyTrackUtil.login("user27");
+        WebElement customerX = UsersCommonArea.chooseModule("Customers");
+        VyTrackUtil.waitFor(3);
+        Assertions.assertTrue(customerX.isDisplayed());
+    }
+
 }
