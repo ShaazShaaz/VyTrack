@@ -9,7 +9,7 @@ public class ConfigReader {
     private  static Properties properties=new Properties();
     static {
         try{
-            FileInputStream in=new FileInputStream("config.properties");
+            FileInputStream in = new FileInputStream("config.properties");
             properties.load(in);
             in.close();
 
