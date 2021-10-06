@@ -10,12 +10,12 @@ import utilities.TestBase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class US1_Homepage extends TestBase {
+public class ManagersHomepage extends TestBase {
 
     @FindBy(xpath = "//div[@id=\"main-menu\"]/ul/li")
     List<WebElement> modules;
 
-    public US1_Homepage(){
+    public ManagersHomepage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
