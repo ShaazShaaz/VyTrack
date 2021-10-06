@@ -25,7 +25,7 @@ public class Driver {
                     obj = new FirefoxDriver();
                     break;
                 default:
-                    obj = null;
+
                     System.out.println("Invalid Browser Type " + browserName);
 
             }
