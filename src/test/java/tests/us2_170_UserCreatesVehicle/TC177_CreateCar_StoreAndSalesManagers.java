@@ -1,4 +1,4 @@
-package tests.us2_UserCreatesVehicle;
+package tests.us2_170_UserCreatesVehicle;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
