@@ -7,8 +7,16 @@ import java.io.File;
 
 public class VyTrackUtil {
 
+US2_userCreateVehicle_Yuliia
+    public void openVyTrackApp(){
+        Driver.getDriver().get(ConfigReader.read("url"));
+    }
+
+    public static void login(String username){
+=======
 
     public void login(String username){
+master
         WebElement loginBox=Driver.getDriver().findElement(By.cssSelector("#prependedInput"));
         loginBox.sendKeys(username);
         WebElement passwordBox=Driver.getDriver().findElement(By.cssSelector("#prependedInput2"));
