@@ -10,9 +10,7 @@ public class Driver {
     // of variable should be WebDriver
     private static WebDriver obj;
     // Create private no arg constructor
-    private Driver(){
-
-    }
+    private Driver(){}
     public static WebDriver getDriver(){
         // Read the browser type u want to launch from properties file
         String browserName=ConfigReader.read("browser");
@@ -28,7 +26,6 @@ public class Driver {
                     obj = new FirefoxDriver();
                     break;
                 default:
-                    obj = null;
                     System.out.println("Invalid Browser Type " + browserName);
 
             }
