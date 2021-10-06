@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class UserCommonArea {
+public class UserCommonAreaPage {
     @FindBy(xpath = "//div[@id=\"main-menu\"]/ul/li/a/span[normalize-space(.)='Fleet']")
     private WebElement fleetModule;
 
@@ -24,7 +24,7 @@ public class UserCommonArea {
     @FindBy(xpath = "//h1/a[@title='Fleet Management']")
     private WebElement fleetMngHomePage;
 
-    public UserCommonArea(){
+    public UserCommonAreaPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 }
