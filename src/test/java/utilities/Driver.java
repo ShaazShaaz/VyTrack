@@ -6,14 +6,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Driver {
+    // Create private static field with name obj Data type
+    // of variable should be WebDriver
     private static WebDriver obj;
+    // Create private no arg constructor
     private Driver(){
 
     }
     public static WebDriver getDriver(){
-        // read the browser type u want to launch from properties file
+        // Read the browser type u want to launch from properties file
         String browserName=ConfigReader.read("browser");
-
+        // Read the browser type you want to launch from confif.properties file
         if (obj==null){
             switch (browserName.toLowerCase()) {
                 case "chrome":
