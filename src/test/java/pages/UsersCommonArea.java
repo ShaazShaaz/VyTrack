@@ -20,7 +20,7 @@ public class UsersCommonArea {
     @FindBy(xpath = "//h1/a[@title='Fleet Management']")
     private WebElement fleetMngHomePage;
 
-    public List<String>modulesGetText(List<String> list){
+    public List<String>modulesGetText(){
         // list={"Dashboard","Fleet","Customers","Sales","Activities","Marketing","Reports & Segments","System"};
 
         List<String> expectedList=new ArrayList<>() ;
