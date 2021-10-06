@@ -41,7 +41,18 @@ public class VyTrackUtil {
         Driver.getDriver().findElement(By.xpath("//a[.='Logout']")).click();
     }
 
-    
+    public static void waitFor(int seconds){
+        /*
+        a method to pause the thread for certain seconds
+        parameter- seconds
+         */
+        try {
+            Thread.sleep(seconds*1000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
 
 
 }
