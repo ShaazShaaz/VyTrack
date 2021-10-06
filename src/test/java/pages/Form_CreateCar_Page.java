@@ -1,4 +1,4 @@
-package tests.us2_UserCreatesVehicle;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,9 +9,9 @@ import static utilities.Driver.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class FormCreateCarPage {
+public class Form_CreateCar_Page {
 
-    public FormCreateCarPage(){
+    public Form_CreateCar_Page(){
         PageFactory.initElements(getDriver(), this);
     }
 
