@@ -35,7 +35,7 @@ public class VyTrackUtil {
 
     }
 
-    public void logOut(){
+    public static void logOut(){
         WebElement logOutDrop=Driver.getDriver().findElement(By.id("user-menu"));
         logOutDrop.click();
         Driver.getDriver().findElement(By.xpath("//a[.='Logout']")).click();
