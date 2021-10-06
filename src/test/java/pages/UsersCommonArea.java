@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -35,5 +36,11 @@ public class UsersCommonArea {
 
     public UsersCommonArea(){
         PageFactory.initElements(Driver.getDriver(),this);
+    }
+
+    public static void chooseModule(String module){
+
+        Driver.getDriver().findElement(By.xpath("//div[@id=\"main-menu\"]/ul/li/a/span[contains(text(),'"+module+"')]")).click();
+
     }
 }
