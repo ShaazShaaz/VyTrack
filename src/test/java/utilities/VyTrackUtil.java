@@ -8,7 +8,8 @@ public class VyTrackUtil {
     public void openVyTrackApp(){
         Driver.getDriver().get(ConfigReader.read("url"));
     }
-    public void login(String username){
+
+    public static void login(String username){
         WebElement loginBox=Driver.getDriver().findElement(By.cssSelector("#prependedInput"));
         loginBox.sendKeys(username);
         WebElement passwordBox=Driver.getDriver().findElement(By.cssSelector("#prependedInput2"));
