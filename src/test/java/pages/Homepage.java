@@ -28,7 +28,6 @@ public class Homepage extends TestBase {
             expectedList.add(eachMod.getText());
 
         }
-
         return expectedList;
     }
 

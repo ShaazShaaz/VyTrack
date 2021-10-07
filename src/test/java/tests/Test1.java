@@ -18,5 +18,9 @@ public class Test1 extends TestBase {
         VyTrackUtil.waitFor(3);
         Assertions.assertTrue(customerX.isDisplayed());
     }
-
+    @Test
+    public void robinTest(){
+        VyTrackUtil.login("storemanager69");
+        UsersCommonArea.chooseModule("Contacts");
+    }
 }
