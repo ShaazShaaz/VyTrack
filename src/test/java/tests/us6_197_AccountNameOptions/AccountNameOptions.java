@@ -31,7 +31,7 @@ public class AccountNameOptions extends TestBase {
     UsersCommonArea accountOptions = new UsersCommonArea();
 
     @Test
-    public void AccountNameOptions() {
+    public void AccountOptions() {
         ArrayList<String> driver = new ArrayList<>(Arrays.asList("user27" , "user28" , "user29"));
 
         for (String each : driver) {
