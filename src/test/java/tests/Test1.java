@@ -13,10 +13,7 @@ public class Test1 extends TestBase {
 
     @Test
     public void test(){
-        VyTrackUtil.login("user27");
-        WebElement customerX = UsersCommonArea.chooseModule("Customers");
-        VyTrackUtil.waitFor(3);
-        Assertions.assertTrue(customerX.isDisplayed());
+
     }
 
 
