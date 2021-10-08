@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
-public class TC179_CreateCar_StoreAndSalesManagers extends TestBase {
+public class TE179_CreateCar_StoreAndSalesManagers extends TestBase {
 //    Given store/sales manager is on the homePage
 //    When user select “Vehicles” under Fleet module
 //    And user click “create car” button
