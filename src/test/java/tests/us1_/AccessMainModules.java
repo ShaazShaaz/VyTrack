@@ -3,6 +3,7 @@ package tests.us1_;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.UsersCommonArea;
+import pages.VyTrackLoginPage;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
 
@@ -29,8 +30,8 @@ Then verify user view 4 models names [verify the names]
 
         for (String each : managers) {
 
-
-            VyTrackUtil.login(each);
+            VyTrackLoginPage.openVyTrackApp();
+            VyTrackLoginPage.login(each);
             //Then verify user view 8 models names [verify the names]
             // list={"Dashboard","Fleet","Customers","Sales","Activities","Marketing","Reports & Segments","System"};
 
@@ -39,7 +40,7 @@ Then verify user view 4 models names [verify the names]
 
             Assertions.assertEquals(list, userArea.modulesGetText());
 
-            VyTrackUtil.logOut();
+            VyTrackLoginPage.logOut();
         }
     }
 
@@ -49,8 +50,8 @@ Then verify user view 4 models names [verify the names]
 
             for (String each : driver) {
 
-
-                VyTrackUtil.login(each);
+                VyTrackLoginPage.openVyTrackApp();
+                VyTrackLoginPage.login(each);
                 //Then verify user view 4 models names [verify the names]
                 // list={"Fleet","Customers","Activities","System"};
 
@@ -60,7 +61,7 @@ Then verify user view 4 models names [verify the names]
                 VyTrackUtil.waitFor(3);
                 Assertions.assertEquals(list, userArea.modulesGetText());
 
-                VyTrackUtil.logOut();
+                VyTrackLoginPage.logOut();
             }
 
 

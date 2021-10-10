@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.US2_Form_CreateCarPage;
-import sun.util.calendar.BaseCalendar;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
 import static utilities.Driver.*;

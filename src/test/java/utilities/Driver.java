@@ -15,7 +15,7 @@ public class Driver {
         String browserName=ConfigReader.read("browser");
 
         if (obj==null){
-            switch (browserName.toLowerCase()) {
+            switch (browserName.toLowerCase().trim()) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     obj = new ChromeDriver();

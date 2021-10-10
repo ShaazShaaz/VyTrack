@@ -25,6 +25,8 @@ public class CreateContactPages {
     @FindBy(xpath = "//*[@id='oro_contact_form_phones_0_phone-uid-61603a82329a4']")
     private WebElement phoneBox;
 
+    @FindBy(xpath = "//*[@id='oro_contact_form_description-uid-61604223db820_ifr']")
+    private WebElement descriptionIframe;
 
 
 }
