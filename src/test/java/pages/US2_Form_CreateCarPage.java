@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import utilities.VyTrackUtil;
 
 import static utilities.Driver.*;
 
@@ -17,31 +18,31 @@ public class US2_Form_CreateCarPage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    @FindBy(id = "#custom_entity_type_LicensePlate-uid-615cbece5ad22")
+    @FindBy(xpath = "//input[@type ='text'][@name='custom_entity_type[LicensePlate]']")
     public WebElement licencePlateBox;
 
     public WebElement checkboxTag(String tagName) {
         ArrayList<String> tags = new ArrayList<>(Arrays.asList("Junior", "Senior", "Employee Car", "Purchased", "Compact", "Sedan", "Convertible"));
         int index = tags.indexOf(tagName);
-        return getDriver().findElement(By.id("custom_entity_type_Tags_" + index + "-uid-615cbece5b3c1"));
+        return getDriver().findElement(By.xpath("//input[@type='checkbox'][@data-name='field__"+index+"']"));
     }
 
-    @FindBy(id = "#custom_entity_type_Driver-uid-615cbece5b588")
+    @FindBy(xpath = "//input[@name='custom_entity_type[Driver]']")
     public WebElement driverBox;
 
-    @FindBy(id = "#custom_entity_type_Location-uid-615cbece5b67d")
+    @FindBy(xpath = "//input[@name='custom_entity_type[Location]']")
     public WebElement locationBox;
 
-    @FindBy(id = "#custom_entity_type_ChassisNumber-uid-615cbece5b769")
+    @FindBy(xpath = "//input[@name='custom_entity_type[ChassisNumber]']")
     public WebElement chassisNumbBox;
 
-    @FindBy(id = "#custom_entity_type_ModelYear-uid-615cbece5b85d")
+    @FindBy(xpath = "//input[@name='custom_entity_type[ModelYear]']")
     public WebElement modelYearBox;
 
-    @FindBy(id = "#custom_entity_type_LastOdometer-uid-615cbece5b946")
+    @FindBy(xpath = "//input[@name='custom_entity_type[LastOdometer]']")
     public WebElement lastOdometerBox;
 
-    @FindBy(id = "#date_selector_custom_entity_type_ImmatriculationDate-uid-615cbece5ba2e")
+    @FindBy(xpath = "//input[contains(@id, 'ImmatriculationDate') and contains(@placeholder, 'Choose a date')]")
     public WebElement immatriculationBox;
 
     public void immatriculationDateSelection(int day, String month, String year ){
@@ -54,13 +55,13 @@ public class US2_Form_CreateCarPage {
         Select selectYear = new Select(yearDropdown);
         selectYear.selectByVisibleText(year);
 
-        getDriver().findElement(By.xpath("//a[@class='ui-state-default'][text()='"+day+"']"));
+        getDriver().findElement(By.xpath("//a[@class='ui-state-default'][text()='"+day+"']")).click();
     }
 
     @FindBy(xpath = "//button[@data-handler='today']")
-    WebElement todayBtn_Immatricular;
+    WebElement todayBtn_Immatriculation;
 
-    @FindBy(id = "#date_selector_custom_entity_type_FirstContractDate-uid-615cbece5bb19")
+    @FindBy(xpath = "//input[contains(@id, 'FirstContractDate') and contains(@placeholder, 'Choose a date')]")
     public WebElement firstContractBox;
 
     public void firstContractDateSelection(int day, String month, String year ){
@@ -73,40 +74,40 @@ public class US2_Form_CreateCarPage {
         Select selectYear = new Select(yearDropdown);
         selectYear.selectByVisibleText(year);
 
-        getDriver().findElement(By.xpath("//a[@class='ui-state-default'][text()='"+day+"']"));
+        getDriver().findElement(By.xpath("//a[@class='ui-state-default'][text()='"+day+"']")).click();
     }
 
-    @FindBy(id = "custom_entity_type_CatalogValue-uid-615cbece5bd7e")
+    @FindBy(xpath= "//input[@name='custom_entity_type[CatalogValue]']")
     public WebElement catalogValue;
 
-    @FindBy(id = "custom_entity_type_SeatsNumber-uid-615cbece5be75")
+    @FindBy(xpath = "//input[@name='custom_entity_type[SeatsNumber]']")
     public WebElement seatsNumberBox;
 
-    @FindBy(id = "#custom_entity_type_DoorsNumber-uid-615cbece5bf6d")
+    @FindBy(xpath = "//input[@name='custom_entity_type[DoorsNumber]']")
     public WebElement doorsNumbBox;
 
-    @FindBy(id = "#custom_entity_type_Color-uid-615cbece5c06f")
+    @FindBy(xpath = "//input[@name='custom_entity_type[Color]']")
     public WebElement colorBox;
 
-    @FindBy(xpath = "//div[@id='s2id_custom_entity_type_Transmission-uid-615cbece5c19d']//span[@class='select2-chosen']")
+    @FindBy(xpath = "//div[contains(@id, 'Transmission')]/following-sibling::select")
     public WebElement transmissionDropdown;
 
-    @FindBy(xpath = "//div[@id='s2id_custom_entity_type_FuelType-uid-615cbece5c2cf']//span[@class='select2-chosen']")
+    @FindBy(xpath = "//div[contains(@id, 'FuelType')]/following-sibling::select")
     public WebElement fuelTypeDropdown;
 
-    @FindBy(id = "#custom_entity_type_CO2Emissions-uid-615cbece5c3bc")
+    @FindBy(xpath = "//input[@name='custom_entity_type[CO2Emissions]']")
     public WebElement co2EmissionBox;
 
-    @FindBy(id = "#custom_entity_type_Horsepower-uid-615cbece5c4c2")
+    @FindBy(xpath = "//input[@name='custom_entity_type[Horsepower]']")
     public WebElement horsepowerBox;
 
-    @FindBy(id = "custom_entity_type_HorsepowerTaxation-uid-615cbece5c5ac")
+    @FindBy(xpath= "//input[@name='custom_entity_type[HorsepowerTaxation]']")
     public WebElement horsepowerTaxationBox;
 
-    @FindBy(id = "#custom_entity_type_Power-uid-615cbece5c697")
+    @FindBy(xpath = "//input[@name='custom_entity_type[Power]']")
     public WebElement powerBox;
 
-    @FindBy(id = "custom_entity_type_Logo_file-uid-615fba159455a")
+    @FindBy(xpath = "//input[@name='custom_entity_type[Logo][file]']")
     public WebElement uploadFile;
 
 
@@ -114,8 +115,7 @@ public class US2_Form_CreateCarPage {
     @FindBy(xpath = "//button[@class='btn btn-medium add-btn'][@name='temp-validation-name-2017']")
     public WebElement addVehicleModelBtn;
 
-    public WebElement modelNameCheckbox(String name) {
-        ////tbody[@class='grid-body']//td[@data-column-label='Model Name'][text()='Model-X']/..
+    public WebElement vehicleModelCheckbox(String name) {
         return getDriver().findElement(By.xpath("//tbody[@class='grid-body']//td[@data-column-label='Model Name'][text()='" + name + "']/.."));
     }
 
@@ -127,8 +127,7 @@ public class US2_Form_CreateCarPage {
     @FindBy(xpath = "//button[@class='btn btn-medium add-btn'][@name='temp-validation-name-93']")
     public WebElement addVehicleMakeBtn;
 
-    public WebElement modelMakeCheckbox(String name) {
-        ////tbody[@class='grid-body']//td[@data-column-label='Model Name'][text()='Model-X']/..
+    public WebElement vehicleMakeCheckbox(String name) {
         return getDriver().findElement(By.xpath("//tbody[@class='grid-body']//td[@data-column-label='Make'][text()='mazda']/.."));
     }
 
@@ -136,3 +135,4 @@ public class US2_Form_CreateCarPage {
     public WebElement selectVehicleMakelBtn;
 
 }
+
