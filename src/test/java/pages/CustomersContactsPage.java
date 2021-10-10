@@ -7,4 +7,6 @@ public class CustomersContactsPage {
 
     @FindBy(xpath = "//*[@id='container']//a[normalize-space(.)='Create Contact']")
     public static WebElement createContactBtn;
+
+
 }
