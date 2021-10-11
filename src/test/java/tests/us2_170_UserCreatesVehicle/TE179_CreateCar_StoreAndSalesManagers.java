@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.US2_Form_CreateCarPage;
+import pages.VyTrackLoginPage;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
 import static utilities.Driver.*;
@@ -37,11 +38,11 @@ public class TE179_CreateCar_StoreAndSalesManagers extends TestBase {
          public void createVehicle(){
 
         ArrayList<String> managers=new ArrayList<>(Arrays.asList("storemanager69","storemanager70","salesmanager128","salesmanager129","salesmanager130"));
+        VyTrackLoginPage page = new VyTrackLoginPage();
         for (String each : managers) {
-
             //    Given store/sales manager is on the homePage
-            VyTrackUtil.login(each);
-
+            page.openVyTrackApp();
+            page.login(each);
             //    When user select “Vehicles” under Fleet module
              Actions action = new Actions(getDriver());
             WebElement fleetModule = getDriver().findElement(By.xpath("//div[@id='main-menu']//li[2]//span[@class='title title-level-1']"));

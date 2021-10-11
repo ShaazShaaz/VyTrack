@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import pages.UsersCommonArea;
+import pages.VyTrackLoginPage;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
 
@@ -28,7 +29,7 @@ public class AccountNameOptions extends TestBase {
     When user click username on the right top corner
     Then verify there are “My Username” “My Configuration” “My Calendar” options
      */
-    UsersCommonArea accountOptions = new UsersCommonArea();
+    //UsersCommonArea accountOptions = new UsersCommonArea();
 
     @Test
     public void AccountOptions() {
@@ -36,16 +37,18 @@ public class AccountNameOptions extends TestBase {
 
         for (String each : driver) {
 
-            VyTrackUtil.login(each);
+            VyTrackLoginPage page = new VyTrackLoginPage();
+            page.openVyTrackApp();
+            page.login(each);
 
             getDriver().findElement(By.id("user-menu")).click();
 
             List<String> accountOptionList = new ArrayList<>();
             accountOptionList.addAll(Arrays.asList( "My User", "My Configuration", "My Calendar"));
-
+            UsersCommonArea accountOptions = new UsersCommonArea();
             Assertions.assertEquals(accountOptionList, accountOptions.optionsGetText());
 
-            VyTrackUtil.logOut();
+            page.logOut();
         }
 
 
