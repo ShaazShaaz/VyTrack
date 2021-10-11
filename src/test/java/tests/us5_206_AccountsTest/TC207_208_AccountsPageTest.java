@@ -25,6 +25,7 @@ public class TC207_208_AccountsPageTest extends TestBase {
            Then verify the checkbox is checked
      */
 
+
     //AccountsPage accountsPage = new AccountsPage();
 
     // Verifying if all checkboxes are selected, if user(Manager) clicks on the first checkbox
