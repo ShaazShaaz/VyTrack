@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class AccountsPage {
     /*
     As a user, I should be able to select accounts from accounts page
@@ -30,7 +32,7 @@ public class AccountsPage {
     public WebElement firstCheckbox;
 
     @FindBy(xpath = "//td/input[@type='checkbox']")
-    public WebElement allCheckbox;
+    public List <WebElement> allCheckbox;
 
     @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[3]/a/span")
     public WebElement customerModule;

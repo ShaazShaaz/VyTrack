@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.SelectingVehicles;
+import pages.VyTrackLoginPage;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
 
@@ -21,9 +22,11 @@ public class TC201_SelectingUnSelectingCars extends TestBase {
     public void checkAndUncheckVehicles(){
 
         ArrayList<String> managers=new ArrayList<>(Arrays.asList("storemanager69","storemanager70","salesmanager128","salesmanager129","salesmanager130"));
+        VyTrackLoginPage page = new VyTrackLoginPage();
         for (String each : managers) {
 
-            VyTrackUtil.login(each);
+            page.openVyTrackApp();
+            page.login(each);
 
             ////span[normalize-space(.)='Fleet']
 
@@ -38,11 +41,11 @@ public class TC201_SelectingUnSelectingCars extends TestBase {
             buttons.checkBox.click();
 
             VyTrackUtil.waitFor(1);
-            assertTrue( SelectingVehicles.checkAll() );
+            assertTrue( buttons.checkAll() );
 
 
 
-            VyTrackUtil.logOut();
+            page.logOut();
 
 
         }
@@ -54,29 +57,21 @@ public class TC201_SelectingUnSelectingCars extends TestBase {
     public void randomCheckBox(){
 
         ArrayList<String> managers=new ArrayList<>(Arrays.asList("storemanager69","storemanager70","salesmanager128","salesmanager129","salesmanager130"));
+        VyTrackLoginPage page = new VyTrackLoginPage();
         for (String each : managers) {
-
-            VyTrackUtil.login(each);
-
+            page.openVyTrackApp();
+            page.login(each);
             SelectingVehicles check = new SelectingVehicles();
-
             check.fleet.click();
-
             VyTrackUtil.waitFor(2);
-
             check.vehicle.click();
-
             VyTrackUtil.waitFor(1);
-
-            SelectingVehicles.randomCheck();
-
-
+            check.randomCheck();
             VyTrackUtil.waitFor(1);
+            assertTrue( check.checkAll() );
 
-            assertTrue( SelectingVehicles.checkAll() );
 
-
-            VyTrackUtil.logOut();
+            page.logOut();
 
             }
 

@@ -37,7 +37,7 @@ public class SelectingVehicles {
 
 
 
-    public static boolean checkAll(){
+    public boolean checkAll(){
 
         SelectingVehicles check = new SelectingVehicles();
 
@@ -76,7 +76,7 @@ public class SelectingVehicles {
 
  */
 
-    public static void randomCheck(){
+    public void randomCheck(){
         Faker faker =new Faker();
         faker.number().numberBetween(2,525);
         WebElement checks = getDriver().findElement(By.xpath("//tbody/tr[5]/td/input"));

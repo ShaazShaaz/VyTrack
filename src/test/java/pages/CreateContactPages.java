@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utilities.Driver;
 
 public class CreateContactPages {
     @FindBy(xpath = "//*[@id='oro_contact_form-uid-61603a82338ee']//a[normalize-space(.)='Cancel']")
@@ -27,6 +29,10 @@ public class CreateContactPages {
 
     @FindBy(xpath = "//*[@id='oro_contact_form_description-uid-61604223db820_ifr']")
     private WebElement descriptionIframe;
+
+    public CreateContactPages(){
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
 
 
 }

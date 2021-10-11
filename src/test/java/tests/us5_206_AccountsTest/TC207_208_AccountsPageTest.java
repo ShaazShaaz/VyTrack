@@ -2,7 +2,9 @@ package tests.us5_206_AccountsTest;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebElement;
 import pages.AccountsPage;
+import pages.VyTrackLoginPage;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
 import java.util.ArrayList;
@@ -23,24 +25,29 @@ public class TC207_208_AccountsPageTest extends TestBase {
            Then verify the checkbox is checked
      */
 
-    AccountsPage accountsPage = new AccountsPage();
+    //AccountsPage accountsPage = new AccountsPage();
 
     // Verifying if all checkboxes are selected, if user(Manager) clicks on the first checkbox
     @Test
     public void verifyAllCheckboxChecked_Managers() {
         ArrayList<String> managers = new ArrayList<>(Arrays.asList("storemanager69", "storemanager70", "salesmanager128", "salesmanager129", "salesmanager130"));
-
+        VyTrackLoginPage page = new VyTrackLoginPage();
+        AccountsPage accountsPage = new AccountsPage();
         for (String each : managers) {
-            VyTrackUtil.login(each);
+            page.login(each);
             VyTrackUtil.waitFor(3);
             accountsPage.selectAccountsBtn_Managers();
             VyTrackUtil.waitFor(3);
             accountsPage.firstCheckbox.click();
 
             VyTrackUtil.waitFor(3);
-            Assertions.assertTrue(accountsPage.allCheckbox.isSelected());
+            // asserting whether each of the checkboxes are selected
+            for (WebElement eachCheckbox : accountsPage.allCheckbox) {
+                Assertions.assertTrue(eachCheckbox.isEnabled());
+
+            }
             VyTrackUtil.waitFor(3);
-            VyTrackUtil.logOut();
+            page.logOut();
         }
     }
 
@@ -48,18 +55,23 @@ public class TC207_208_AccountsPageTest extends TestBase {
     @Test
     public void verifyAllCheckboxChecked_Drivers(){
         ArrayList<String> drivers = new ArrayList<>(Arrays.asList("user27", "user28" , "user29" ));
-
+        VyTrackLoginPage page = new VyTrackLoginPage();
         for (String each : drivers) {
-            VyTrackUtil.login(each);
+            page.openVyTrackApp();
+            page.login(each);
             VyTrackUtil.waitFor(3);
+            AccountsPage accountsPage = new AccountsPage();
             accountsPage.selectAccountsBtn_Drivers();
             VyTrackUtil.waitFor(3);
             accountsPage.firstCheckbox.click();
+            VyTrackUtil.waitFor(3);
+            // asserting whether each of the checkboxes are selected
+            for (WebElement eachCheckbox : accountsPage.allCheckbox) {
+                Assertions.assertTrue(eachCheckbox.isEnabled());
 
+            }
             VyTrackUtil.waitFor(3);
-            Assertions.assertTrue(accountsPage.allCheckbox.isEnabled());
-            VyTrackUtil.waitFor(3);
-            VyTrackUtil.logOut();
+            page.logOut();
         }
     }
 
@@ -67,18 +79,19 @@ public class TC207_208_AccountsPageTest extends TestBase {
     @Test
     public void verifyOneCheckboxSelection_Driver(){
         ArrayList<String> drivers = new ArrayList<>(Arrays.asList("user27", "user28" , "user29" ));
-
+        VyTrackLoginPage page = new VyTrackLoginPage();
+        AccountsPage accountsPage = new AccountsPage();
         for (String each : drivers) {
-            VyTrackUtil.login(each);
+            page.openVyTrackApp();
+            page.login(each);
             VyTrackUtil.waitFor(3);
             accountsPage.selectAccountsBtn_Drivers();
             VyTrackUtil.waitFor(3);
             accountsPage.selectOneCheckbox_Drivers();
-
             VyTrackUtil.waitFor(3);
             Assertions.assertTrue(accountsPage.thirdCheckBox.isEnabled());
             VyTrackUtil.waitFor(3);
-            VyTrackUtil.logOut();
+            page.logOut();
         }
 
     }
@@ -87,10 +100,11 @@ public class TC207_208_AccountsPageTest extends TestBase {
     @Test
     public void verifyOneCheckboxSelection_Manager(){
         ArrayList<String> managers = new ArrayList<>(Arrays.asList("storemanager69", "storemanager70", "salesmanager128", "salesmanager129", "salesmanager130"));
-
-
+        AccountsPage accountsPage = new AccountsPage();
         for (String each : managers) {
-            VyTrackUtil.login(each);
+            VyTrackLoginPage page = new VyTrackLoginPage();
+            page.openVyTrackApp();
+            page.login(each);
             VyTrackUtil.waitFor(3);
             accountsPage.selectAccountsBtn_Managers();
             VyTrackUtil.waitFor(3);
@@ -99,7 +113,7 @@ public class TC207_208_AccountsPageTest extends TestBase {
             VyTrackUtil.waitFor(3);
             Assertions.assertTrue(accountsPage.thirdCheckBox.isEnabled());
             VyTrackUtil.waitFor(3);
-            VyTrackUtil.logOut();
+            page.logOut();
         }
 
     }

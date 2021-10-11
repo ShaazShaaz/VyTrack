@@ -1,8 +1,12 @@
 package tests.us4_;
 
 import com.github.javafaker.Faker;
+import net.bytebuddy.pool.TypePool;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CreateContactPages;
 import pages.CustomersContactsPage;
 import pages.US2_Form_CreateCarPage;
@@ -10,6 +14,7 @@ import pages.VyTrackLoginPage;
 import utilities.Driver;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,25 +37,23 @@ public class CreateContactAsMng extends TestBase {
         for (String eachManager : managers) {
             // Each mng user open, login and wait foe being logged
             // in 3 sec
-            VyTrackLoginPage.openVyTrackApp();
-            VyTrackLoginPage.login(eachManager);
-            VyTrackUtil.waitFor(3);
+            VyTrackLoginPage page = new VyTrackLoginPage();
+            page.openVyTrackApp();
+            page.login(eachManager);
             // Each mnuser hover over "Customers" module then "Contacts" option
             // and click on it
+            VyTrackUtil.waitFor(4);
             Actions action = new Actions(Driver.getDriver());
-            action.moveToElement(chooseModule("Customers"))
-                    .moveToElement(mngCustomersOptions("Contacts"))
-                    .click()
-                    .perform();
+     //      action.moveToElement(chooseModule("Customers"))
+     //               .moveToElement(mngCustomersOptions("Contacts"))
+     //               .click()
+     //               .perform();
             // On "Contact" page user click on "Create Contact Button" and wait
             // for 3 sec till load the page
-            VyTrackUtil.waitFor(3);
-            CustomersContactsPage page = new CustomersContactsPage();
-//            Driver.getDriver().
-
-//            Faker faker = new Faker();
-//            form.
-
+            VyTrackUtil.waitFor(4);
+            CustomersContactsPage customersContactsPage = new CustomersContactsPage();
+            customersContactsPage.createContactBtn.click();
+            page.logOut();
 
         }
     }
