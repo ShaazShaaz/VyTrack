@@ -35,6 +35,7 @@ public class TC207_208_AccountsPageTest extends TestBase {
         VyTrackLoginPage page = new VyTrackLoginPage();
         AccountsPage accountsPage = new AccountsPage();
         for (String each : managers) {
+            page.openVyTrackApp();
             page.login(each);
             VyTrackUtil.waitFor(3);
             accountsPage.selectAccountsBtn_Managers();
