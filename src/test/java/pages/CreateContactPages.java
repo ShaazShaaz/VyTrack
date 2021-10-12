@@ -117,6 +117,9 @@ public class CreateContactPages {
     @FindBy(xpath = "//input[@name='oro_contact_form[addresses][0][postalCode]']")
     private WebElement addressZipcodeBox;
 
+    @FindBy(xpath = "//iframe[contains(@id,oro_contact_form_description)]")
+    private WebElement iFrame;
+
     /**
      * Class constructor
      */
@@ -131,6 +134,13 @@ public class CreateContactPages {
         contactMiddleNameBox.sendKeys(faker.name().firstName());
         contactLastNameBox.sendKeys(faker.name().lastName());
         contactSuffixBox.sendKeys(faker.name().suffix());
+        /**
+         *
+         */
+        Driver.getDriver().switchTo().frame(iFrame);  // index, id or xpath
+        WebElement active = Driver.getDriver().switchTo().activeElement();
+        active.sendKeys(faker.chuckNorris().fact());
+        Driver.getDriver().switchTo().defaultContent();
         contactEmailBox.sendKeys(faker.internet().emailAddress());
         contactPhonesBox.sendKeys(faker.phoneNumber().cellPhone());
         contactFaxBox.sendKeys(faker.phoneNumber().phoneNumber());
