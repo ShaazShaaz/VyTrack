@@ -7,10 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.CreateContactPages;
-import pages.CustomersContactsPage;
-import pages.US2_Form_CreateCarPage;
-import pages.VyTrackLoginPage;
+import pages.*;
 import utilities.Driver;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
@@ -29,31 +26,41 @@ public class CreateContactAsMng extends TestBase {
 
     @Test
     public void createContact(){
-        // List of mng users storemanager69, storemanager70, salesmanager128,
-        // salesmanager129,salesmanager130
+        /*
+         * List of mng users storemanager69, storemanager70, salesmanager128,
+         * salesmanager129,salesmanager130
+         */
+
         List<String> managers = new ArrayList<>(Arrays.asList("storemanager69",
-                                    "storemanager70","salesmanager128",
-                                    "salesmanager129","salesmanager130"));
+                "storemanager70","salesmanager128",
+                "salesmanager129","salesmanager130"));
+        /*
+         * Creation of objects page that will be used during the test
+         */
+        VyTrackLoginPage loginPage = new VyTrackLoginPage();
+        CustomersContactsPage customersContactsPage = new CustomersContactsPage();
+        CreateContactPages createContactPages = new CreateContactPages();
+
         for (String eachManager : managers) {
-            // Each mng user open, login and wait foe being logged
-            // in 3 sec
-            VyTrackLoginPage page = new VyTrackLoginPage();
-            page.openVyTrackApp();
-            page.login(eachManager);
+            /*
+             * Each mng user open the app, login into it and wait for being logged
+             * in 3 sec
+             */
+            loginPage.openVyTrackApp();
+            loginPage.login(eachManager);
             // Each mnuser hover over "Customers" module then "Contacts" option
             // and click on it
-            VyTrackUtil.waitFor(4);
-            Actions action = new Actions(Driver.getDriver());
-     //      action.moveToElement(chooseModule("Customers"))
-     //               .moveToElement(mngCustomersOptions("Contacts"))
-     //               .click()
-     //               .perform();
+            VyTrackUtil.waitFor(3);
+            createContactPages.chooseModule();
+            createContactPages.chooseOption();
             // On "Contact" page user click on "Create Contact Button" and wait
             // for 3 sec till load the page
-            VyTrackUtil.waitFor(4);
-            CustomersContactsPage customersContactsPage = new CustomersContactsPage();
+            VyTrackUtil.waitFor(3);
             customersContactsPage.createContactBtn.click();
-            page.logOut();
+            createContactPages.fillForm();
+            createContactPages.saveContact();
+            VyTrackUtil.waitFor(3);
+            loginPage.logOut();
 
         }
     }
