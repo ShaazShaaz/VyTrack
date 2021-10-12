@@ -1,24 +1,26 @@
 package tests.us2_170_UserCreatesVehicle;
 
-import com.github.javafaker.DateAndTime;
+
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import pages.US2_Form_CreateCarPage;
+import pages.UsersCommonArea;
 import pages.VyTrackLoginPage;
 import utilities.TestBase;
 import utilities.VyTrackUtil;
+
+import static utilities.VyTrackUtil.*;
+
 import static utilities.Driver.*;
 
-import java.time.LocalDate;
-import java.time.Year;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
+
 
 public class TE179_CreateCar_StoreAndSalesManagers extends TestBase {
 //    Given store/sales manager is on the homePage
@@ -32,21 +34,20 @@ public class TE179_CreateCar_StoreAndSalesManagers extends TestBase {
     //StoreManager: storemanager69 , storemanager70
     //SalesManager: salesmanager128 , salesmanager129 , salesmanager130
 
-    //    Given store/sales manager is on the homePage
-
-         @Test
-         public void createVehicle(){
-
-        ArrayList<String> managers=new ArrayList<>(Arrays.asList("storemanager69","storemanager70","salesmanager128","salesmanager129","salesmanager130"));
-        VyTrackLoginPage page = new VyTrackLoginPage();
+    @Test
+    public void createVehicle() {
+        VyTrackLoginPage loginPage = new VyTrackLoginPage();
+        ArrayList<String> managers = new ArrayList<>(Arrays.asList("storemanager69", "storemanager70", "salesmanager128", "salesmanager129", "salesmanager130"));
         for (String each : managers) {
+
             //    Given store/sales manager is on the homePage
-            page.openVyTrackApp();
-            page.login(each);
+            loginPage.login(each);
+            waitFor(2);
+
             //    When user select “Vehicles” under Fleet module
-             Actions action = new Actions(getDriver());
+            Actions action = new Actions(getDriver());
             WebElement fleetModule = getDriver().findElement(By.xpath("//div[@id='main-menu']//li[2]//span[@class='title title-level-1']"));
-            action.moveToElement(fleetModule);
+            action.moveToElement(fleetModule).perform();
             getDriver().findElement(By.linkText("Vehicles")).click();
 
             //    And user click “create car” button
@@ -54,27 +55,70 @@ public class TE179_CreateCar_StoreAndSalesManagers extends TestBase {
 
             //    When user fill out general information
             Faker faker = new Faker();
-
             US2_Form_CreateCarPage form = new US2_Form_CreateCarPage();
-            form.licencePlateBox.sendKeys(faker.letterify("##-")+faker.letterify("####"));
+
+            waitFor(3);
+            String licencePlate = faker.letterify("##") + faker.letterify("-####");
+            form.licencePlateBox.sendKeys(licencePlate);
+
             form.checkboxTag("Sedan").click();
             form.driverBox.sendKeys(faker.name().fullName());
             form.locationBox.sendKeys(faker.address().fullAddress());
-            form.chassisNumbBox.sendKeys(faker.letterify("###")+faker.numerify("############"));
-            form.modelYearBox.sendKeys("1995");            // HOW TO USE FAKER ******?
+            form.chassisNumbBox.sendKeys(faker.letterify("###") + faker.numerify("############"));
+            form.modelYearBox.sendKeys("1995");            // HOW TO USE FAKER FOR YEAR******?
             form.lastOdometerBox.sendKeys(faker.numerify("###-###"));
+            //**
             form.immatriculationBox.click();
-            form.immatriculationDateSelection(19,"October","2019");
+            waitFor(2);
+            form.immatriculationDateSelection(19, "Oct", "2019");
+            //**
             form.firstContractBox.click();
-            form.firstContractDateSelection(3,"February","2020");
+            waitFor(2);
+            form.firstContractDateSelection(3, "Feb", "2020");
+
+            form.catalogValue.sendKeys("$" + faker.numerify("##-###"));
+            form.seatsNumberBox.sendKeys("5");
+            form.doorsNumbBox.sendKeys("4");
+            form.colorBox.sendKeys(faker.color().name());
+            //**
+            Select transmission = new Select(form.transmissionDropdown);
+            transmission.selectByVisibleText("Automatic");
+            //**
+            Select fuelType = new Select(form.fuelTypeDropdown);
+            fuelType.selectByVisibleText("Hybrid");
+
+            form.co2EmissionBox.sendKeys(faker.random().nextDouble() +"");
+            form.horsepowerBox.sendKeys(faker.number().numberBetween(100, 300) + "horsepower");
+            form.horsepowerTaxationBox.sendKeys(faker.number().numberBetween(1, 20) + "%");
+            form.powerBox.sendKeys(faker.numerify("###"));
+            //**
+            WebElement upload = getDriver().switchTo().activeElement();
+            upload.sendKeys("/Users/YuliiaNazarova/Desktop/logo.jpeg");
+            //**
+            form.addVehicleModelBtn.click();
+            form.vehicleModelCheckbox("corolla");
+            form.selectVehicleModelBtn.submit();
+            //**
+            form.addVehicleMakeBtn.click();
+            form.vehicleMakeCheckbox("Toyota");
+            form.selectVehicleMakelBtn.submit();
 
 
+            //    And click “Save and Close” button
+            getDriver().findElement(By.xpath("//button[@type='submit'][@class='btn btn-success action-button']")).submit();
 
 
+            //    Then verify “Entity saved” confirm message
+            WebElement alertMsg = getDriver().findElement(By.xpath("//div[@class='message'][text()='Entity saved']"));
+            Assertions.assertTrue(alertMsg.isDisplayed());
 
+            //Extra - check that licence plate matches with the one entered in a form
+            WebElement licencePlateVerify = getDriver().findElement
+                    (By.xpath("//label[@class='control-label'][text()='License Plate']/following-sibling::div/div"));
+            Assertions.assertEquals(licencePlate, licencePlateVerify.getText());
 
 
         }
-}
+    }
 
 }
