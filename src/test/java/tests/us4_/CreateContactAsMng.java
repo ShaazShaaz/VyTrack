@@ -48,7 +48,7 @@ public class CreateContactAsMng extends TestBase {
              */
             loginPage.openVyTrackApp();
             loginPage.login(eachManager);
-            // Each mnuser hover over "Customers" module then "Contacts" option
+            // Each user hover over "Customers" module then "Contacts" option
             // and click on it
             VyTrackUtil.waitFor(3);
             createContactPages.chooseModule();

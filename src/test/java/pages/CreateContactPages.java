@@ -134,13 +134,12 @@ public class CreateContactPages {
         contactEmailBox.sendKeys(faker.internet().emailAddress());
         contactPhonesBox.sendKeys(faker.phoneNumber().cellPhone());
         contactFaxBox.sendKeys(faker.phoneNumber().phoneNumber());
-//        contactSkypeBox.sendKeys(faker.);
-//        contactTwitterBox.sendKeys(faker.);
-//        contactFacebookBox.sendKeys(faker.);
-//        contactGooglePlusBox.sendKeys(faker.);
-//        contactLinkedInBox.sendKeys(faker.);
+        contactSkypeBox.sendKeys(faker.internet().emailAddress());
+        contactTwitterBox.sendKeys(faker.internet().emailAddress());
+        contactFacebookBox.sendKeys(faker.internet().emailAddress());
+        contactGooglePlusBox.sendKeys(faker.internet().emailAddress());
+        contactLinkedInBox.sendKeys(faker.internet().emailAddress());
         contactJobTitleBox.sendKeys(faker.job().title());
-//        addressLabelBox.sendKeys(faker.);
         addressPrefixBox.sendKeys(faker.name().prefix());
         addressFirstNameBox.sendKeys(faker.name().firstName());
         addressMiddleNameBox.sendKeys(faker.name().firstName());
@@ -161,7 +160,6 @@ public class CreateContactPages {
         addressStateBlankBox.sendKeys("Florida");
         action.sendKeys(Keys.ENTER)
                 .perform();
-//        addressStateBox.sendKeys(faker.address().state());
         addressZipcodeBox.sendKeys(faker.address().zipCode());
     }
     public void saveContact(){
