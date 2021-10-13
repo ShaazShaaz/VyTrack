@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import net.bytebuddy.pool.TypePool;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static pages.UsersCommonArea.*;
-
+import static utilities.Driver.getDriver;
 
 
 public class CreateContactAsMng extends TestBase {
@@ -59,6 +60,8 @@ public class CreateContactAsMng extends TestBase {
             customersContactsPage.createContactBtn.click();
             createContactPages.fillForm();
             createContactPages.saveContact();
+            WebElement alertMsg = getDriver().findElement(By.xpath("//div[@class='message'][text()='Contact saved']"));
+            Assertions.assertTrue(alertMsg.isDisplayed());
             VyTrackUtil.waitFor(3);
             loginPage.logOut();
 
