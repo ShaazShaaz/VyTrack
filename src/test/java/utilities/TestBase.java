@@ -15,13 +15,13 @@ public abstract class TestBase {
         Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-   /* @AfterEach
+    @AfterEach
     public void quitBrowser(){
         // Clear the WebDriver object making it null
         Driver.closeBrowser();
     }
 
-    */
+
 
 
 }
