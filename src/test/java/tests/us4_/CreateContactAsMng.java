@@ -1,15 +1,8 @@
 package tests.us4_;
 
-import com.github.javafaker.Faker;
-import net.bytebuddy.pool.TypePool;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.CreateContactPages;
 import pages.CustomersContactsPage;
-import pages.US2_Form_CreateCarPage;
 import pages.VyTrackLoginPage;
 import utilities.Driver;
 import utilities.TestBase;
@@ -19,9 +12,6 @@ import utilities.VyTrackUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static pages.UsersCommonArea.*;
-
 
 
 public class CreateContactAsMng extends TestBase {
