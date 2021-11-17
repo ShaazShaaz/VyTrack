@@ -2,6 +2,8 @@ package utilities;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 
@@ -30,5 +32,10 @@ public class VyTrackUtil {
         }catch (InterruptedException e){
                e.printStackTrace();
         }
+    }
+
+    public static WebElement waitForVisibility(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }
